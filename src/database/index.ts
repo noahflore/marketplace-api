@@ -15,10 +15,10 @@ class MongoDBConnection {
 
   constructor() {
     if (!process.env.DATABASE_URL) {
-      throw new Error("DATABASE_URL não definida no .env");
+      throw new Error("DATABASE_URL not Defined .env");
     }
     this.mongoUrl = process.env.DATABASE_URL;
-    console.log(`Tentando conectar em: ${this.mongoUrl}`);
+    console.log(`Trying connect: ${this.mongoUrl}`);
   }
 
   async execute(): Promise<void> {
@@ -27,9 +27,9 @@ class MongoDBConnection {
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
       });
-      console.log("✅ MongoDB conectado!");
+      console.log("✅ MongoDB connected!");
     } catch (err: any) {
-      console.error("❌ Erro na conexão:", err.message);
+      console.error("❌ Error connection:", err.message);
       process.exit(1);
     }
   }
