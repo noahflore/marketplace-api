@@ -1,19 +1,19 @@
 import { User } from "modules/Users/entities/User";
 import bcrypt  from "bcrypt"
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
-import { error } from "console";
-import { UserRepositoriesMongoDB } from "modules/Users/repositories/implementations/UserRepositoriesMongoDB";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class CreateService{
-    constructor(private userRepository: UserRepositoriesMongoDB){}
+    constructor(@inject("UserRepositories") private UserRepositories: IUserRepositories){}
 
     public async execute(body: User): Promise<void> {
         const hashPassword = await bcrypt.hash(body.password, 10)
 
-        const userExists = await this.userRepository.findByEmail(body.email)
+        const userExists = await this.UserRepositories.findByEmail(body.email)
         
         if(userExists) throw new Error("User Exists")
 
-        await this.userRepository.create({...body, password: hashPassword})
+        await this.UserRepositories.create({...body, password: hashPassword})
     }
 }

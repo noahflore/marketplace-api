@@ -1,13 +1,14 @@
 import { Request, Response } from "express"
 import { CreateService } from "./createService"
+import { container } from "tsyringe"
 
-export class CreateController{
-    constructor(private CreateService: CreateService){}
+class CreateController{
 
    async handle(req: Request, res: Response): Promise<Response> {
         try {
             const body = req.body
-            await this.CreateService.execute(body)
+            const createService = container.resolve(CreateService)
+            await createService.execute(body)
             return res.sendStatus(201)
         } catch (err: any) {
             console.log("erro na criação: ", err.message)
@@ -15,3 +16,5 @@ export class CreateController{
         }
     }
 }
+
+export default new CreateController
