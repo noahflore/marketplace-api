@@ -16,4 +16,9 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
         async findAll(limit: number, offset: number): Promise<User[]> {
             return await UserSchema.find().select("-password").limit(limit).skip(offset)
         }
+
+        async findById(id: string): Promise<User | null> {
+            const user = await UserSchema.findById(id).select("-password")
+            return user
+        }
     }
