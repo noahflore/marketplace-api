@@ -3,7 +3,6 @@ import { IUserRepositories } from "../IUserRepositories";
 import UserSchema from "modules/Users/schemas/UserSchema";
 
 export class UserRepositoriesMongoDB implements IUserRepositories{
-           
         async create(body: User): Promise<void> {
             await UserSchema.create(body)
         }
@@ -21,4 +20,9 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
             const user = await UserSchema.findById(id).select("-password")
             return user
         }
+
+        async update(id: string, data: User): Promise<void> {
+            await UserSchema.findByIdAndUpdate(id , data)
+        }
+           
     }
