@@ -2,6 +2,7 @@ import { Router } from "express";
 import authMiddleware from "middleware/authMiddleware";
 import paginationMiddleware from "middleware/paginationMiddleware";
 import CreateController  from "modules/Users/useCases/create/createController";
+import deleteController from "modules/Users/useCases/delete/deleteController";
 import findAllController from "modules/Users/useCases/findAll/findAllController";
 import findByIdController from "modules/Users/useCases/findById/findByIdController";
 import updateController from "modules/Users/useCases/update/updateController";
@@ -13,6 +14,6 @@ userRouters.use(authMiddleware.execute)
 userRouters.get("/", paginationMiddleware.execute, findAllController.handle)
 userRouters.get("/:id", findByIdController.handle)
 userRouters.patch("/", updateController.handle)
-
+userRouters.delete("/", deleteController.handle)
 
 export default userRouters
