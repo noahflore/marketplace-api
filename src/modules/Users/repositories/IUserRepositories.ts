@@ -9,4 +9,6 @@ export interface IUserRepositories{
     update(id: string, data: User): Promise<void>
     delete(id: string): Promise<void>
     addNewAddress(userId: string, address: Address): Promise<void>
+    removeNewAddress(userId: string, addressId: string): Promise<void>
+    findAddressById(addressId: string, userId: string): Promise<Address | null>
 }
