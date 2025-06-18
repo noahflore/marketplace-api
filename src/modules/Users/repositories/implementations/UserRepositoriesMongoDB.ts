@@ -59,4 +59,17 @@ export class UserRepositoriesMongoDB implements IUserRepositories{
             )
         }
     
+        async addFavProduct(userId: string, productId: string): Promise<void>{
+            await UserSchema.findOneAndUpdate(
+                {
+                    _id: userId
+                },{
+                    $push:{
+                        fav_product:{
+                            _id: productId
+                        }
+                    }
+                }
+            )
+        }
     }
