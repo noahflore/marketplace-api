@@ -8,6 +8,7 @@ import deleteController from "modules/Users/useCases/delete/deleteController";
 import findAllController from "modules/Users/useCases/findAll/findAllController";
 import findByIdController from "modules/Users/useCases/findById/findByIdController";
 import removeAddressController from "modules/Users/useCases/removeAddress/removeAddressController";
+import removeFavProductController from "modules/Users/useCases/removeFavProduct/removeFavProductController";
 import updateController from "modules/Users/useCases/update/updateController";
 
 const userRouters = Router()
@@ -21,5 +22,6 @@ userRouters.delete("/", deleteController.handle)
 userRouters.post("/:add-address", addAddressController.handle)
 userRouters.delete("/remove-address/:idAddress", removeAddressController.handle)
 userRouters.post("/:add-favorite-product/:productId", addFavProductController.handle)
+userRouters.delete("/:remove-favorite-product/:productId", removeFavProductController.handle)
 
 export default userRouters
