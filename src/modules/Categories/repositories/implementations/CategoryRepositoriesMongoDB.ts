@@ -8,9 +8,10 @@ export class CategoryRepositoriesMongoDB implements ICategoryRepositories{
                 await CategorySchema.create({...body, IDuser: userId})
             }
 
-    findAll(limit: number, offset: number): Promise<Category[]> {
-        throw new Error("Method not implemented.")
+    async findAll(limit: number, offset: number): Promise<Category[]> {
+                return await CategorySchema.find().limit(limit).skip(offset)
     }
+
     async findById(id: string): Promise<Category | null> {
         const category = await CategorySchema.findById(id)
         return category
