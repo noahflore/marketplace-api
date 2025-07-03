@@ -2,6 +2,7 @@ import { Router } from "express"
 import authMiddleware from "middleware/authMiddleware"
 import paginationMiddleware from "middleware/paginationMiddleware"
 import createController from "modules/Categories/useCases/create/createController"
+import deleteController from "modules/Categories/useCases/delete/deleteController"
 import findAllController from "modules/Categories/useCases/findAll/findAllController"
 import findByIdController from "modules/Categories/useCases/findById/findByIdController"
 import updateController from "modules/Categories/useCases/update/updateController"
@@ -13,5 +14,6 @@ categoryRouters.post("/", createController.handle)
 categoryRouters.get("/", paginationMiddleware.execute, findAllController.handle)
 categoryRouters.get("/:id", findByIdController.handle)
 categoryRouters.patch("/:id", updateController.handle)
+categoryRouters.delete("/:id", deleteController.handle)
 
 export default categoryRouters

@@ -25,8 +25,9 @@ export class CategoryRepositoriesMongoDB implements ICategoryRepositories{
     async update(id: string, data: Category): Promise<void> {
         await CategorySchema.findByIdAndUpdate(id , data)
     }
-    delete(id: string): Promise<void> {
-        throw new Error("Method not implemented.")
+
+    async delete(id: string): Promise<void> {
+        await CategorySchema.findByIdAndDelete(id)
     }
 
 
