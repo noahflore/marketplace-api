@@ -1,6 +1,4 @@
-import { User } from "modules/Users/entities/User";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
-import bcrypt from "bcrypt"
 import { inject, injectable } from "tsyringe";
 
 @injectable()
