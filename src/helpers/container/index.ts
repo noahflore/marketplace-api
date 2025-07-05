@@ -20,3 +20,8 @@ container.registerSingleton<ICategoryRepositories>(
     "CategoryRepositories",
     CategoryRepositoriesMongoDB
 )
+
+container.registerSingleton<IOrderRepositories>(
+    "OrderRepositories",
+    OrderRepositoriesMongoDB
+)
