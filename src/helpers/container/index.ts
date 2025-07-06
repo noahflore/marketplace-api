@@ -5,6 +5,8 @@ import { container } from "tsyringe";
 import { AuthRepositoriesMongoDB } from "modules/Auth/repositories/implementations/AuthRepositories";
 import { ICategoryRepositories } from "modules/Categories/repositories/ICategoryRepositories";
 import { CategoryRepositoriesMongoDB } from "modules/Categories/repositories/implementations/CategoryRepositoriesMongoDB";
+import { IOrderRepositories } from "modules/Orders/repositories/IOrderRepositories";
+import { OrderRepositoriesMongoDB } from "modules/Orders/repositories/implementations/OrderRepositoriesMongoDB";
 
 container.registerSingleton<IUserRepositories>(
     "UserRepositories",
