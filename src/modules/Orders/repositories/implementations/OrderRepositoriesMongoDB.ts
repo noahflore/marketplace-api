@@ -13,7 +13,12 @@ export class OrderRepositoriesMongoDB implements IOrderRepositories{
         }
 
         async findById(id: string): Promise<Order | null> {
-            const order = await OrderSchema.findById(id)
+            const order = await OrderSchema.findById(id).select("-__v")
+            return order
+        }
+
+        async findByBody(body: Order): Promise<Order | null> {
+            const order = await OrderSchema.findById(body.add_orders)
             return order
         }
 
