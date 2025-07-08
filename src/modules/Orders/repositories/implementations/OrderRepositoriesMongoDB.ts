@@ -9,7 +9,7 @@ export class OrderRepositoriesMongoDB implements IOrderRepositories{
         }
 
         async findAll(limit: number, offset: number): Promise<Order[]> {
-            return await OrderSchema.find().limit(limit).skip(offset)
+            return await OrderSchema.find().limit(limit).skip(offset).select("-__v")
         }
 
         async findById(id: string): Promise<Order | null> {
