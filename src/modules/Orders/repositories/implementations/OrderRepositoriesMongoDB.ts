@@ -22,8 +22,19 @@ export class OrderRepositoriesMongoDB implements IOrderRepositories{
             return order
         }
 
-        async updateReady(id: string): Promise<void> {
-            await OrderSchema.findByIdAndUpdate(id)
+        async updateReady(id: string, data: boolean): Promise<Order | null> {
+            const order = await OrderSchema.findOneAndUpdate( 
+                {
+                    _id: id
+                },
+                {
+                    $set:{
+                        add_orders:[{
+                            ready: data
+                       }]}
+                }
+                )
+            return order
         }
 
         async delete(id: string): Promise<void> {

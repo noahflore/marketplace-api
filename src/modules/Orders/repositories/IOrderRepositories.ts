@@ -6,7 +6,7 @@ export interface IOrderRepositories{
     findAll(limit: number, offset: number): Promise<Order[]>
     findById(id: string): Promise<Order | null>
     findByBody(body: Order): Promise<Order | null>
-    updateReady(id: string): Promise<void>
+    updateReady(id: string, data: boolean): Promise<Order | null>
     delete(id: string): Promise<void>
 
 }
