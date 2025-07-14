@@ -26,4 +26,4 @@ class CreateController{
     }
 }
 
-export default new CreateController
+export default new CreateController()
