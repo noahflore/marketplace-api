@@ -10,9 +10,9 @@ export class FindAllService{
     }
 
     async execute(limit: number, offset: number): Promise<Order[]>{
-        const users = await this.orderRepositories.findAll(limit, offset)
+        const orders = await this.orderRepositories.findAll(limit, offset)
 
-        if(!users.length) throw new Error("Orders not found")
-        return users
+        if(!orders.length) throw new Error("Orders not found")
+        return orders
     }
 }
