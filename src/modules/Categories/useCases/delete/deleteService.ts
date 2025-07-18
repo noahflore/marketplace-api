@@ -9,8 +9,8 @@ export class DeleteService{
     }
 
     async execute(id: string): Promise<void>{
-        const user = await this.categoryRepositories.findById(id)
-        if(!user) throw new Error("category not found")
+        const category = await this.categoryRepositories.findById(id)
+        if(!category) throw new Error("category not found")
         
         await this.categoryRepositories.delete(id)
     }
