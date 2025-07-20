@@ -9,6 +9,8 @@ import { IOrderRepositories } from "modules/Orders/repositories/IOrderRepositori
 import { OrderRepositoriesMongoDB } from "modules/Orders/repositories/implementations/OrderRepositoriesMongoDB";
 import { CartRepositoriesMongoDB } from "modules/Carts/repositories/implementations/CartRepositoriesMongoDB";
 import { ICartRepositories } from "modules/Carts/repositories/ICartRepositories";
+import { IProductRepositories } from "modules/Products/repositories/IProductRepositories";
+import { ProductRepositoriesMongoDB } from "modules/Products/repositories/implementations/ProductRepositoriesMongoDB";
 
 container.registerSingleton<IUserRepositories>(
     "UserRepositories",
@@ -33,4 +35,9 @@ container.registerSingleton<IOrderRepositories>(
 container.registerSingleton<ICartRepositories>(
     "CartRepositories",
     CartRepositoriesMongoDB
+)
+
+container.registerSingleton<IProductRepositories>(
+    "ProductRepositories",
+    ProductRepositoriesMongoDB
 )
