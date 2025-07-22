@@ -8,10 +8,7 @@ const ProductSchema= new Schema<Product>({
     unit_price:{type: Number, required: true},
     bar_code:{type: String, required: true, unique: true},
     imagem:{type: String, required: true},
-    categorie:[ {
-        _id:{type: Schema.Types.ObjectId, required: true, ref: "categories"
-
-        }}],
+    categorieId:{type: Schema.Types.ObjectId, required: true, ref: "categories"},
     created_at:{type: Date, default: Date.now()}
 })
 
