@@ -8,25 +8,20 @@ export class ProductRepositoriesMongoDB implements IProductRepositories{
             await ProductSchema.create(body)
         }
 
-        async findByEmail(email: string): Promise<User | null> {
-            const user = await UserSchema.findOne({email})
-            return user
+        async findAll(limit: number, offset: number): Promise<Product[]> {
+            return await ProductSchema.find().select("-__v").limit(limit).skip(offset)
         }
 
-        async findAll(limit: number, offset: number): Promise<User[]> {
-            return await UserSchema.find().select("-password").limit(limit).skip(offset)
+        async findById(id: string): Promise<Product | null> {
+            const product = await ProductSchema.findById(id).select("-__v")
+            return product
         }
 
-        async findById(id: string): Promise<User | null> {
-            const user = await UserSchema.findById(id).select("-password")
-            return user
-        }
-
-        async update(id: string, data: User): Promise<void> {
-            await UserSchema.findByIdAndUpdate(id , data)
+        async update(id: string, data: Product): Promise<void> {
+            await ProductSchema.findByIdAndUpdate(id , data)
         }
 
         async delete(id: string): Promise<void> {
-            await UserSchema.findByIdAndDelete(id)
+            await ProductSchema.findByIdAndDelete(id)
         }
     }
