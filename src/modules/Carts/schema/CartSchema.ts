@@ -12,6 +12,7 @@ const CartSchema= new Schema<Cart>({
             userId:{type: Schema.Types.ObjectId, ref: "users" },
             amount:{type: Number, required: true},
             price_unit:{type: Number, required: true},
+            freight:{type: Number, rerquired: true},
             created_at:{type: Date, default: Date.now()}
         }
     ],
