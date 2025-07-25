@@ -5,7 +5,7 @@ import createController from "modules/Carts/useCases/create/createController"
 import deleteController from "modules/Carts/useCases/delete/deleteController"
 import findAllController from "modules/Carts/useCases/findAll/findAllController"
 import findByIdController from "modules/Carts/useCases/findById/findByIdController"
-import updateController from "modules/Carts/useCases/update/updateController"
+import updateController from "modules/Carts/useCases/updateAndAdd/updateAndAddController"
 
 const cartRouters = Router()
 
