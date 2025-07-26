@@ -8,9 +8,9 @@ export class CreateService{
     constructor(@inject("CartRepositories") private cartRepositories: ICartRepositories){}
 
     public async execute(body: Cart): Promise<void> {
-        //const cartExists = await this.cartRepositories.findByBody(body)
+        const cartExists = await this.cartRepositories.findByBody(body)
         
-        //if(cartExists) throw new Error("Cart Exists")
+        if(cartExists) throw new Error("Cart Exists")
 
         await this.cartRepositories.create(body)
     }
