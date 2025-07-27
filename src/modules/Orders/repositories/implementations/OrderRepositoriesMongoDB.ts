@@ -1,6 +1,6 @@
 import { Order } from "modules/Orders/entities/Order"
 import { IOrderRepositories } from "../IOrderRepositories"
-import OrderSchema from "modules/Orders/schema/OrderSchema"
+import OrderSchema from "modules/Orders/schemas/OrderSchema"
 
 
 export class OrderRepositoriesMongoDB implements IOrderRepositories{
