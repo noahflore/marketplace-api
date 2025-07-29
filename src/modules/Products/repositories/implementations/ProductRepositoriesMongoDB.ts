@@ -1,5 +1,5 @@
 import { Product } from "modules/Products/entities/Product"
-import ProductSchema from "modules/Products/schema/ProductSchema"
+import ProductSchema from "modules/Products/schemas/ProductSchema"
 import { IProductRepositories } from "../IProductRepositories"
 
 
