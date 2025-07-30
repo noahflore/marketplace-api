@@ -7,7 +7,7 @@ const CartSchema= new Schema<Cart>({
         {
             _id:{
                 type: Schema.Types.ObjectId,
-                ref: "products", required: true
+                ref: "products", required: true, unique: true
             },
             userId:{type: Schema.Types.ObjectId, ref: "users" },
             amount:{type: Number, required: true},
@@ -16,6 +16,7 @@ const CartSchema= new Schema<Cart>({
             created_at:{type: Date, default: Date.now()}
         }
     ],
+    created_at:{type: Date, default: Date.now()}
 })
 
 export default model<Cart>("carts", CartSchema)
