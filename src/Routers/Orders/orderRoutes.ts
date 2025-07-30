@@ -6,11 +6,13 @@ import findByIdController from "modules/Orders/useCases/findById/findByIdControl
 import findAllController from "modules/Orders/useCases/findAll/findAllController"
 import updateReadyController from "modules/Orders/useCases/updateReady/updateReadyController"
 import deleteController from "modules/Orders/useCases/delete/deleteController"
+import { OrderSchemaJoi } from "modules/Orders/schemas/joi/OrderSchemaJoi"
+import ValidationSchema from "middleware/SchemaValidationMiddleware"
 
 const orderRouters = Router()
 
 orderRouters.use(authMiddleware.execute)
-orderRouters.post("/", createController.handle)
+orderRouters.post("/", ValidationSchema.execute(OrderSchemaJoi), createController.handle)
 orderRouters.get("/:id", findByIdController.handle)
 orderRouters.get("/", paginationMiddleware.execute, findAllController.handle)
 orderRouters.patch("/:id", updateReadyController.handle)
