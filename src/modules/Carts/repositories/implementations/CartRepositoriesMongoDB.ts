@@ -17,8 +17,12 @@ export class CartRepositoriesMongoDB implements ICartRepositories{
         }  
 
         async findByBody(body: Cart): Promise<Cart | null> {
-            const cart = await CartSchema.findOne(body)
-            return cart
+            const productIds = body.add_products.map(product => product._id);
+            const cart = await CartSchema.findOne({
+                "add_products._id": { $in: productIds }
+            });
+
+            return cart;
         }
 
         async updateAndAdd(id: string, data: Cart): Promise<Cart | null> {
