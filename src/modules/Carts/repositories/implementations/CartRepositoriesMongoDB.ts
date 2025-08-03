@@ -39,6 +39,20 @@ export class CartRepositoriesMongoDB implements ICartRepositories{
             return cart
         }
 
+        async updateAndRemove(cartId: string, productId: string): Promise<Cart | null> {
+                const cart = await CartSchema.findOneAndUpdate(
+                {
+                    _id: cartId
+                },
+                {
+                    $pull: {
+                        add_products: { _id: productId }
+                    }
+                }
+            );
+            return cart;
+        }
+
         async delete(id: string): Promise<void> {
             await CartSchema.findByIdAndDelete(id)
         }

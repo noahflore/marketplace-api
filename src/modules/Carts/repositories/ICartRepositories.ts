@@ -7,6 +7,7 @@ export interface ICartRepositories{
     findById(id: string): Promise<Cart | null>
     findByBody(body: Cart): Promise<Cart | null>
     updateAndAdd(id: string, data: Cart): Promise<Cart | null>
+    updateAndRemove(cartId: string, productId: string): Promise<Cart | null>
     delete(id: string): Promise<void>
 
 }
